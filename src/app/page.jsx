@@ -62,7 +62,9 @@ export default function Home() {
           Reset
         </button>
         {items.length !== 0 && (
-          <div className={styles.display}>`{items.join(", ")}`</div>
+          <div className={styles.display}>
+            `{items.join(", ").toUpperCase()}`
+          </div>
         )}
       </div>
     </main>

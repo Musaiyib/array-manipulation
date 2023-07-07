@@ -455,7 +455,7 @@ function Home() {
                     className: (_page_module_css__WEBPACK_IMPORTED_MODULE_3___default().display),
                     children: [
                         "`",
-                        items.join(", "),
+                        items.join(", ").toUpperCase(),
                         "`"
                     ]
                 })
