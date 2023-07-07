@@ -45,6 +45,7 @@
   background-color: transparent;
   color: #fff;
   z-index: 1;
+  text-transform: uppercase;
 }
 
 /* .span {
