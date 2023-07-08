@@ -1,0 +1,107 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[3]!./src/app/page.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+.page_main__ibFHK {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.page_items__iJdbi {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  width: auto;
+  height: 100dvh;
+  padding-top: 100px;
+}
+
+.page_item__r9nMA {
+  width: 150px;
+  height: 150px;
+  margin: 0 10px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.page_itemsContainer__XWDDp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.page_input__MSOId {
+  width: 20px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+/* .span {
+  position: absolute;
+  right: 10;
+  z-index: 1;
+  width: 10px;
+  background: #09624c;
+  height: 130px;
+} */
+
+.page_itemLeft__JTCzH {
+  flex: 1 1;
+  position: absolute;
+  width: 75px;
+  height: 150px;
+  left: 0;
+}
+.page_itemRight__zhv7s {
+  flex: 1 1;
+  position: absolute;
+  width: 75px;
+  height: 150px;
+  right: 0;
+}
+.page_itemLeft__JTCzH:hover {
+  flex: 1 1;
+  background-color: #a00a0a;
+  position: absolute;
+  width: 75px;
+  height: 150px;
+  left: 0;
+}
+.page_itemRight__zhv7s:hover {
+  flex: 1 1;
+  background-color: #0c6806;
+  position: absolute;
+  width: 75px;
+  height: 150px;
+  right: 0;
+}
+
+.page_display__lQ17e {
+  margin-top: 100px;
+}
+
+.page_btn__koofn {
+  width: 70px;
+  height: 40px;
+  background-color: #9a1515;
+  border: none;
+  margin-top: 30px;
+  border-radius: 10px;
+  color: #fff;
+}
+
