@@ -1,7 +1,6 @@
 "use client";
-
-import { useState } from "react";
-import Image from "next/image";
+import React, { useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -11,8 +10,6 @@ export default function Home() {
   const handleChange = (e, index) => {
     e.preventDefault();
     const newItems = [...items];
-    // const val = e.target.value;
-    // newItems.splice(index, 1, val);
     newItems[index] = e.target.value;
     setItems(newItems);
   };
@@ -27,46 +24,92 @@ export default function Home() {
     newItems.splice(i, 1);
     setItems(newItems);
   };
+
+  const getItemStyle = (isDragging, draggableStyle) => ({
+    background: isDragging ? "lightgreen" : "transparent",
+    ...draggableStyle,
+  });
+
+  const reOrder = (list, currentIndex, destinationIndex) => {
+    const result = [...list];
+    const [reorderedItem] = result.splice(currentIndex, 1);
+    result.splice(destinationIndex, 0, reorderedItem);
+    return result;
+  };
+
+  const onDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
+    const updatedItems = reOrder(
+      items,
+      result.source.index,
+      result.destination.index
+    );
+    setItems(updatedItems);
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.items}>
-        <div className={styles.itemsContainer}>
-          {items.map((item, index) => (
-            <div key={item + index} className={styles.item}>
-              <input
-                type="text"
-                className={styles.input}
-                value={item}
-                style={{
-                  border:
-                    (item === "_") | (item === "") ? "1px solid #fff" : "none",
-                }}
-                onChange={(e) => handleChange(e, index)}
-              />
-              <div
-                className={styles.itemLeft}
-                onClick={() => handleRemove(index)}
-              />
-              <div
-                className={styles.itemRight}
-                onClick={() => handleAdd(index)}
-              />
+    <main>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="droppable" direction="horizontal">
+          {(provided, snapshot) => (
+            <div ref={provided.innerRef} className={styles.items}>
+              <div className={styles.itemsContainer}>
+                {items.map((item, index) => (
+                  <Draggable
+                    key={item + index}
+                    draggableId={item + index}
+                    index={index}
+                    // className={styles.items}
+                  >
+                    {(provided, snapshot) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        style={getItemStyle(
+                          snapshot.isDragging,
+                          provided.draggableProps.style
+                        )}
+                        className={styles.item}
+                      >
+                        <input
+                          type="text"
+                          value={item}
+                          onChange={(e) => handleChange(e, index)}
+                          className={styles.input}
+                        />
+                        <div
+                          onClick={() => handleRemove(index)}
+                          className={styles.itemLeft}
+                        />
+                        <div
+                          onClick={() => handleAdd(index)}
+                          className={styles.itemRight}
+                        />
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+              <button
+                // type="button"
+                className={styles.btn}
+                onClick={() => setItems(initial)}
+              >
+                Reset
+              </button>
+              {items.length !== 0 && (
+                <div className={styles.display}>
+                  `{items.join(", ").toUpperCase()}`
+                </div>
+              )}
             </div>
-          ))}
-        </div>
-        <button
-          type="button"
-          className={styles.btn}
-          onClick={() => setItems(initial)}
-        >
-          Reset
-        </button>
-        {items.length !== 0 && (
-          <div className={styles.display}>
-            `{items.join(", ").toUpperCase()}`
-          </div>
-        )}
-      </div>
+          )}
+        </Droppable>
+      </DragDropContext>
     </main>
   );
 }
