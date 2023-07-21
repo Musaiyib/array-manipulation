@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Array Manipulation",
   description:
-    "This project is design to handle simple but complex among the array manipulation tricks",
+    "This project is design to handle simple but complex array manipulation tricks",
 };
 
 export default function RootLayout({ children }) {
