@@ -4,7 +4,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import styles from "./page.module.css";
 
 export default function Home() {
-  const initial = ["A", "B", "C", "D", "E", "F"];
+  const initial = ["A", "B", "C", "D", "E", "F", "G"];
   const [items, setItems] = useState([...initial]);
 
   const handleChange = (e, index) => {
